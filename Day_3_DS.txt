@@ -1,0 +1,100 @@
+1. Write a function “insert_any()” for inserting a node at any given position of the linked list. Assume
+position starts at 0.
+
+node *create(int x){
+	node *new = (node *)malloc(sizeof(node));
+	new -> node = x;
+	new -> next = NULL;
+	return new;
+}
+void insert_any()
+{	int pos=0;
+	int item,i;
+	node *new = create(data);
+	node *temp;
+	if (new == NULL){
+		printf("Overflow");
+	}
+	else{
+		printf("Enter the Position :");
+		scanf("%d",&pos);
+		new -> data = item;
+		temp = head;
+		for(i=0;i<pos;i++){
+			temp = temp -> next;
+			if(temp==NULL){
+				printf("Cannot Insert");
+			}
+		}
+		new -> next = temp -> next;
+		temp -> next = new;
+		printf("Node Inserted");
+	}
+}
+
+
+2. Write a function “delete_beg()” for deleting a node from the beginning of the linked list.
+
+int delete_beg(){
+	int ele;
+	if(head == NULL){
+		printf("List is empty");
+	}
+	else{
+		ele = head->data;
+		head = head->next;
+	}
+	return ele;
+}
+
+
+3. Write a function “delete_end()” for deleting a node from the end of the linked list.
+
+void delete_end(){
+	node *new,*temp;
+	if(head == NULL){
+		printf("List is empty");
+	}
+	else if(head -> next == NULL){
+		head = NULL;
+		free(head);
+		printf("Node of the list is deleted");
+	}
+	else{
+		new = head;
+		while(new -> next != NULL){
+			temp = new;
+			new = new ->next;
+		}
+		temp -> next = NULL;
+		free(new);
+		printf("Deleted node from the end...");
+	}
+}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
