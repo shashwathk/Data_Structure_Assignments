@@ -1,0 +1,75 @@
+#include<stdio.h>
+int cq[50],fp=-1,rp=-1,size;
+void enqueue(int x);
+void dequeue();
+void disp();
+int main()
+{	printf("Enter the size of the array :");
+	scanf("%d",&size);
+	enqueue(10);
+	enqueue(20);
+	enqueue(33);
+	
+	disp();
+	
+	dequeue();
+	dequeue();
+	
+	disp();
+	return 0 ;
+}
+void enqueue(int x)
+{	if(fp==((rp+1)%size))
+	{	printf("Queue is full");
+	}
+	else if(fp==-1)
+	{	fp=rp=0;
+		cq[rp] = x;
+		printf("Element %d is inserted.",&x);
+	}
+	else
+	{	rp = (rp+1)%size;
+		cq[rp] = x;
+		printf("Element %d is inserted. ",&x);
+	}
+}
+void dequeue()
+{	int x = -1;
+	if(fp==-1)
+	{	printf("Queue is empty");
+		exit(1);
+	}
+	else
+	{	x = cq[fp];
+		if(fp==rp)
+		{	fp=rp=-1;
+		}
+		else
+		{	fp = (fp+1)%size;
+		}
+	}
+	printf("Element %d is deleted.",&x);
+}
+void disp()
+{	int i;
+	if(fp==-1)
+	{	printf("Queue is empty");
+		exit(1);
+	}
+	else if(fp<=rp)
+	{	printf("Elements in the circular queue are :");
+		for(i=fp;i<=rp;i++)
+			printf("%d",&cq[i]);
+	}
+	else
+	{	printf("Elements in the circular queue are :");
+		for(i=fp;i<=size;i++)
+			printf("%d",&cq[i]);
+		for(i=0;i<rp;i++)
+			printf("%d",&cq[i]);
+	}
+	printf("\n");
+}
+	
+	
+	
