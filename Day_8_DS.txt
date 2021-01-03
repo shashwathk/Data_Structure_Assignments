@@ -1,0 +1,85 @@
+#include<stdio.h>
+int st[50],top,size,min_ele;
+void push(int ele);
+void pop();
+void disp();
+void getMin();
+int main(){
+	printf("Enter the size of the stack :");
+	scanf("%d",&size);
+	push(30);
+	push(40);
+	push(50);
+	disp();
+	getMin();
+	pop();
+	pop();
+	disp();
+	getMin();
+	return 0;
+	
+}
+
+void push(int ele){
+	if(top == size)
+	{	printf("Stack is FULL");
+		exit(1);
+	}
+	else
+	{	min_ele = ele;
+		top++;
+		st[top] = ele;
+		printf("Number is inserted :%d",&ele);
+	}
+	if(ele<min_ele)
+	{	push(2*ele - min_ele);
+		min_ele = x;
+	}
+	else
+	{    
+		top++;
+		st[top] = ele;
+    }
+	printf("Element Inserted %d",&ele);
+
+}
+void pop(){
+	int ele;
+	if(top == -1)
+	{	printf("Stack is empty");
+		exit(1);
+	}
+	printf("Top most element is removed");
+	ele = st[top];
+	top--;
+	if(ele<min_ele)
+	{	printf("%d",&min_ele);
+		min_ele = 2*min_ele - ele;
+	}
+	else
+		printf("%d",&ele);
+}
+void disp(){
+	int ele;
+	if(top == -1)
+	{	printf("Stack is empty");
+		exit(1);
+	}
+	ele = st[top];
+	printf("Top most element is :");
+	if(ele<min_ele)
+		printf("%d",&min_ele);
+	else
+		printf("%d",&ele);
+}
+void getMin()
+{	
+	if(top == -1)
+	{	printf("Stack is empty");
+		exit(1);
+	}
+	else
+	{	printf("Minimum Element in the stack is :%d",&min_ele);
+	}
+	printf("\n");
+}
